@@ -1,7 +1,12 @@
-/** Button that attempts to use the token in context when clicked */
-export default function Tablet() {
-  // TODO: call authenticate when form is submitted
+import { useContext } from "react";
+import { AuthContext } from "./AuthContext";
 
+export default function Tablet() {
+  const {authenticate}=useContext(AuthContext)
+  const handleSubmitTablet= (event)=> {
+  event.preventDefault();
+  authenticate()
+}
   return (
     <section>
       <p>
@@ -16,7 +21,9 @@ export default function Tablet() {
       <p>
         It holds out a rectangular stone tablet carved with an intricate design.
       </p>
-      <form>
+      <form
+      onSubmit={handleSubmitTablet}
+      >
         <button>Place your palm upon the tablet.</button>
       </form>
     </section>
